@@ -14,55 +14,52 @@ export const WeightChart: React.FC = () => {
 
   if (data.length < 2) {
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6 flex items-center justify-center h-64">
+      <div className="flex items-center justify-center h-full min-h-[400px]">
         <p className="text-gray-400">Aguardando dados para gerar gráfico...</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow p-6">
-      <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-4">Evolução do Peso</h3>
-      <div className="h-64 w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            data={data}
-            margin={{
-              top: 10,
-              right: 30,
-              left: 0,
-              bottom: 0,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
-            <XAxis 
-              dataKey="formattedTime" 
-              tick={{ fontSize: 12, fill: '#9CA3AF' }}
-              tickLine={false}
-              axisLine={false}
-            />
-            <YAxis 
-              domain={[0, 'auto']} // Or domain={[settings.tareWeight, 'auto']}
-              tick={{ fontSize: 12, fill: '#9CA3AF' }}
-              tickLine={false}
-              axisLine={false}
-              unit={settings.unit}
-            />
-            <Tooltip 
-              contentStyle={{ backgroundColor: '#1F2937', borderColor: '#374151', color: '#F9FAFB' }}
-              itemStyle={{ color: '#F9FAFB' }}
-              labelStyle={{ color: '#9CA3AF' }}
-            />
-            <Area 
-              type="monotone" 
-              dataKey="weight" 
-              stroke="#0ea5e9" 
-              fill="#e0f2fe" 
-              fillOpacity={0.3}
-            />
-          </AreaChart>
-        </ResponsiveContainer>
-      </div>
+    <div className="w-full h-full min-h-[400px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          data={data}
+          margin={{
+            top: 10,
+            right: 10, // Reduced right margin for mobile
+            left: -20, // Adjusted left margin to fit y-axis labels
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
+          <XAxis 
+            dataKey="formattedTime" 
+            tick={{ fontSize: 12, fill: '#9CA3AF' }}
+            tickLine={false}
+            axisLine={false}
+          />
+          <YAxis 
+            domain={[0, 'auto']} 
+            tick={{ fontSize: 12, fill: '#9CA3AF' }}
+            tickLine={false}
+            axisLine={false}
+            unit={settings.unit}
+          />
+          <Tooltip 
+            contentStyle={{ backgroundColor: '#1F2937', borderColor: '#374151', color: '#F9FAFB' }}
+            itemStyle={{ color: '#F9FAFB' }}
+            labelStyle={{ color: '#9CA3AF' }}
+          />
+          <Area 
+            type="monotone" 
+            dataKey="weight" 
+            stroke="#0ea5e9" 
+            fill="#e0f2fe" 
+            fillOpacity={0.3}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
     </div>
   );
 };

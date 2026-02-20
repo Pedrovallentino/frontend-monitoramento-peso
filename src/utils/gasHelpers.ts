@@ -16,7 +16,7 @@ export const getStatusColor = (percentage: number): string => {
 };
 
 export const getStatusText = (percentage: number): string => {
-  if (percentage > 40) return 'Uso Normal';
-  if (percentage > 20) return 'Atenção';
-  return 'Troca Recomendada';
+  if (percentage > 40) return 'Nível Adequado';
+  if (percentage > 20) return 'Nível Médio';
+  return 'Nível Crítico';
 };
