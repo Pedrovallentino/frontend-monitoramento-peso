@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'https://monitoramento-de-peso-api.onrender.com/api';
 
 export interface DeviceStatus {
   weightKg: number;
